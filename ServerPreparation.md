@@ -123,7 +123,6 @@ Do the following steps to recompile the kernel
     if it said **invalid argument**, it means the kernel is still default, otherwise the kernel has been properly recompiled
 
     ![bridge1.png](images/bridge1.png)
-    ![bridge2.png](images/bridge2.png)
 
     ![kernel11.png](images/kernel11.png)
 
