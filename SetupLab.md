@@ -15,12 +15,13 @@ This is the topology of the virtual which will be setup throughout this guide.
 |leaf2 | vEX |Server Leaf with ESI-LAG|vEX disk image|
 |leaf3 | vEX |Server Leaf|vEX disk image|
 |leaf4 | vEX |Border Leaf|vEX disk image|
-|gw1 | vMX | DC gateway|vMX disk image|
+|fw1 | vSRX | DC gateway|vSRX disk image|
 |svr1 | ubuntu | Dual-homed server|ubuntu disk image|
 |svr2 | ubuntu | Single-homed server| ubuntu disk image|
 |svr3 | ubuntu | Dual-homed server|ubuntu disk image|
 |apstra| ubuntu | Juniper Apstra server | Juniper Apstra disk image| 
 |ztp | ubuntu | Juniper Apstra ZTP server | Juniper Apstra ZTP server disk image|
+
 ## Linux bridge for connection between VM
 
 |bridge | node A | Interface on node A| node Z | interface on node Z|
@@ -48,15 +49,15 @@ You can use the following table for the ip addresses or you can change it accord
 
 | Node | Interface | IP address|
 |-|-|-|
-|spine1| fxp0|10.1.100.101/24|
-|spine2| fxp0|10.1.100.102/24|
-|leaf1| fxp0|10.1.100.111/24|
-|leaf2| fxp0|10.1.100.112/24|
-|leaf3| fxp0|10.1.100.113/24|
-|leaf4| fxp0|10.1.100.114/24|
-|gw1| fxp0|10.1.100.120/24|
-|Juniper Apstra | eth0 |10.1.100.11/24|
-|Apstra ZTP | eth0 |10.1.100.12/24|
+|spine1| fxp0|10.1.101.101/24|
+|spine2| fxp0|10.1.101.102/24|
+|leaf1| fxp0|10.1.101.111/24|
+|leaf2| fxp0|10.1.101.112/24|
+|leaf3| fxp0|10.1.101.113/24|
+|leaf4| fxp0|10.1.101.114/24|
+|fw1| fxp0|10.1.101.121/24|
+|Juniper Apstra | eth0 |10.1.101.11/24|
+|Apstra ZTP | eth0 |10.1.101.12/24|
 
 ## Create and Start the Virtual MAchines
 1. Upload the disk image into Server
@@ -101,8 +102,8 @@ You can use the following table for the ip addresses or you can change it accord
 3. Login using default username/password: admin/admin, and change the password.
 4. Set static ip for Apstra server. for example in this lab, this is the network configuration of apstra server
 
-        ip address: 10.1.100.11/24
-        gateway: 10.1.100.1
+        ip address: 10.1.101.11/24
+        gateway: 10.1.101.1
         dns server: 192.168.10.1
 
 5. Verify that you can open ssh session into apstra server.
@@ -145,8 +146,8 @@ You can use the following table for the ip addresses or you can change it accord
 3. Login using default username/password: admin/admin.
 4. Set static ip address for Apstra ZTP server
 
-        IP address: 10.1.100.12/24
-        gateway4: 10.1.100.1
+        IP address: 10.1.101.12/24
+        gateway4: 10.1.101.1
         DNS server: 192.168.10.1
 5. Or the following script, [set_ztp_net.sh](scripts/set_ztp_net.sh) to set the ip address of ZTP server
 
@@ -157,8 +158,8 @@ You can use the following table for the ip addresses or you can change it accord
             ethernets:
                 eth0:
                     dhcp4: false
-                    addresses: [ 10.1.100.12/24]
-                    gateway4: 10.1.100.1
+                    addresses: [ 10.1.101.12/24]
+                    gateway4: 10.1.101.1
                     nameservers:
                         addresses: [ 192.168.10.1 ]
         EOF
