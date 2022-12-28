@@ -5,8 +5,8 @@ network:
     ethernets:
         eth0:
             dhcp4: false
-            addresses: [ 10.1.100.12/24]
-            gateway4: 10.1.100.1
+            addresses: [ 10.1.101.12/24]
+            gateway4: 10.1.101.1
             nameservers:
                 addresses: [ 192.168.10.1 ]
 EOF

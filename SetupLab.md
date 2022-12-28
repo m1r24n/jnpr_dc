@@ -218,6 +218,36 @@ You can use the following table for the ip addresses or you can change it accord
     
 
 
-    21.2R3-S1.7
+15. On VM ZTP, edit file /containers_data/tftp/ztp.json
+16. Look for entry "junos_versions", and empty its values. This is to allow any version of Junos to be accepted during the ZTP process.
+
+    BEFORE
+
+    ![junos_before](images/junos_before.png)
+
+    AFTER
+
+    ![junos_after](images/junos_after.png)
+
+
+17. Reboot ZTP zerver
+18. Then virtual junos (vEX and vMX) will go through ZTP process.
+
+
+## Verifying ZTP proccess.
+
+1. Open Apstra Web UI Dashboard, and go to menu **Devices > ZTP Status > services**, to verify that ZTP services is up and running
+
+    BEFORE
+
+    ![ztp_before](images/ztp1_before.png)
+
+    AFTER
+
+    ![ztp_after](images/ztp1_after.png)
+
+2. Go to menu **Devices > ZTP Status > Devices** to verify the ZTP process on junos devices. Wait until the ZTP status is completed
+
+    ![ztp_devices](images/ztp_devices.png)
 
 

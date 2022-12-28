@@ -13,16 +13,17 @@ The Lab consists of the following exercises
     - create ASN Pool
     - create IP Pools
     - create IPv6 Pools
-- [Lab 3, Blueprint](LabExercise_2.md)
+- [Lab 3, Blueprint](LabExercise_3.md)
     - create Blueprint
     - Assign resources to blueprint
     - assign devices to blueprint
     - deploy blueprint
     - verify that configuration are pushed to the devices
 
-- [Lab 4, Blueprint Configuration](LabExercise_2.md)
+- [Lab 4, Blueprint Configuration](LabExercise_4.md)
+    - Enable ipv6 on DC fabric
     - create Routing Zone
-    - Create virtual network
     - Create connectivity to external devices
+    - Create virtual network
     - Connect servers to blueprint
-    - verify connectivity between servers inside DC and external
+    - verify connectivity between servers inside the DC and external
