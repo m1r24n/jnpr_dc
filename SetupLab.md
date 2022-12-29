@@ -39,7 +39,7 @@ This is the topology of the virtual which will be setup throughout this guide.
 |l3p2|leaf3|ge-0/0/2|svr2| ens1|
 |l1p3|leaf1|ge-0/0/3|svr3| ens1|
 |l2p3|leaf2|ge-0/0/3|svr3| ens2|
-|l4p2|leaf4|ge-0/0/2|gw1| ge-0/0/0|
+|l4p2|leaf4|ge-0/0/2|fw1| ge-0/0/0|
 |lan100|all virtual Junos|fxp0|-|-|
 
 
@@ -75,7 +75,7 @@ You can use the following table for the ip addresses or you can change it accord
    - [leaf2.sh](scripts/leaf2.sh)
    - [leaf3.sh](scripts/leaf3.sh)
    - [leaf4.sh](scripts/leaf4.sh)
-   - [gw1.sh](scripts/gw1.sh)
+   - [fw1.sh](scripts/fw1.sh)
 
 6. Verify that the virtual machines are up and running
 
@@ -124,7 +124,7 @@ You can use the following table for the ip addresses or you can change it accord
 2. Repeat the previous step for all virtual Junos
 3. Or the following script can be used to get the list of mac address
 
-        for i in spine{1..2} leaf{1..4} gw1
+        for i in spine{1..2} leaf{1..4}
         do 
             echo $i 
             virsh dumpxml $i | grep -m 1 'mac address'
@@ -209,18 +209,8 @@ You can use the following table for the ip addresses or you can change it accord
 
     ![aos1_after](images/aos1_after.png)
 
-
-14. Access serial console of one of the virtual junos, and get the junos version
-
-        virsh console spine1
-        show version
-
-    ![junos_ver](images/junos_ver.png)
-    
-
-
-15. On VM ZTP, edit file /containers_data/tftp/ztp.json
-16. Look for entry "junos_versions", and empty its values. This is to allow any version of Junos to be accepted during the ZTP process.
+14. On VM ZTP, edit file /containers_data/tftp/ztp.json
+15. Look for entry "junos_versions", and empty its values. This is to allow any version of Junos to be accepted during the ZTP process.
 
     BEFORE
 
@@ -231,8 +221,8 @@ You can use the following table for the ip addresses or you can change it accord
     ![junos_after](images/junos_after.png)
 
 
-17. Reboot ZTP zerver
-18. Then virtual junos (vEX and vMX) will go through ZTP process.
+16. Reboot ZTP zerver
+17. Then virtual junos (vEX) will go through ZTP process.
 
 
 ## Verifying ZTP proccess.
